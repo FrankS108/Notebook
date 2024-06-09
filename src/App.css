@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('assets/fonts/Roboto-Light.ttf')  format('truetype')
+  /* Add additional font formats if necessary */
+  /* Specify the correct path to the font files */
+}
+
+body {
+  font-family: 'CustomFont', sans-serif;
+}
+
