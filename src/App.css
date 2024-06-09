@@ -1,11 +1,123 @@
 @font-face {
   font-family: 'CustomFont';
-  src: url('assets/fonts/Roboto-Light.ttf')  format('truetype')
+  src: url('assets/fonts/RobotoCondensed-VariableFont_wght.ttf')  format('truetype')
   /* Add additional font formats if necessary */
   /* Specify the correct path to the font files */
 }
 
 body {
   font-family: 'CustomFont', sans-serif;
+}
+
+h1.ce-header{
+  @apply text-3xl font-bold
+}
+h2.ce-header{
+  @apply text-2xl font-semibold
+}
+h3.ce-header{
+  @apply text-xl font-semibold
+}
+h4.ce-header{
+  @apply text-lg font-semibold
+}
+h5.ce-header{
+  @apply text-base font-semibold
+}
+h6.ce-header{
+  @apply text-base font-semibold
+}
+
+
+:root {
+  /* background color */
+  --main: #111827;
+
+  /* Toolbar and popover */
+  --primary: #0f172a;
+
+  /* On hover or selected */
+  --selected: rgba(255, 255, 255, 0.2);
+
+  /* Border color */
+  --border: #1e293b;
+
+  /* Text and icon colors */
+  --text: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+}
+.dark {
+  background-color: var(--main);
+}
+
+.dark .ce-toolbar__plus,
+.dark .ce-toolbar__settings-btn,
+.dark .ce-popover-item__title,
+.dark .ce-popover-item__icon {
+  color: var(--text);
+}
+
+.dark .cdx-search-field.ce-popover__search {
+  background-color: #1e293b4d;
+  border-color: var(--border);
+}
+
+.dark .cdx-search-field__input {
+  color: var(--text);
+}
+
+.dark .cdx-block,
+.dark .ce-block {
+  color: var(--text);
+}
+
+.dark .ce-inline-toolbar,
+.dark .ce-conversion-tool__icon,
+.dark .ce-popover-item__icon {
+  color: var(--text);
+  background-color: var(--primary);
+  border-color: var(--border);
+}
+
+.dark .ce-popover,
+.dark .ce-conversion-toolbar,
+.dark .ce-inline-toolbar {
+  background-color: var(--primary);
+  border-color: var(--border);
+  box-shadow: 0 3px 15px -3px var(--border);
+}
+
+.dark .ce-inline-tool:hover,
+.dark .ce-inline-toolbar__dropdown:hover,
+.dark .ce-toolbar__plus:hover,
+.dark .ce-toolbar__settings-btn:hover,
+.dark .ce-conversion-tool:hover,
+.dark .ce-popover-item:hover {
+  background-color: var(--selected);
+}
+
+.dark .ce-block .ce-block__content *::selection,
+.dark .cdx-block *::selection,
+.dark .cdx-search-field__input::selection,
+.dark .ce-block.ce-block--selected .ce-block__content {
+  background-color: var(--selected);
+}
+
+.dark .ce-popover__items {
+  scrollbar-color: var(--border) var(--main);
+}
+
+@media (max-width: 650px) {
+  .dark .ce-toolbar__settings-btn,
+  .dark .ce-toolbar__plus {
+    background-color: var(--primary);
+    border-color: var(--border);
+    box-shadow: 0 3px 15px -3px var(--border);
+  }
 }
 

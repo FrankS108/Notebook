@@ -17,4 +17,6 @@ export interface BlocksContext {
     updateData: (newData: OutputData) => void;
     setRef: (newRef: EditorJS | null) => void;
     exportToPDF: () => void;
+    darkTheme: () => void;
+    isDark: boolean;
 }

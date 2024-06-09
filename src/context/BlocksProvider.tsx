@@ -13,6 +13,7 @@ interface props {
 export const BlocksProvider = ({ children } : props) => {
     const editorRef = useRef<EditorJS | null>(null);
     const [editorData, setEditorData] = useState<OutputData>({ blocks: [] });
+    const [isDark, setDark] = useState(true);
 
     const updateData = (newData: OutputData) => {
         setEditorData(newData);
@@ -20,7 +21,7 @@ export const BlocksProvider = ({ children } : props) => {
 
     const setRef = (newRef: EditorJS | null) => {
         editorRef.current = newRef;
-    }
+    };
 
     const exportToPDF = async () => {
         if (!editorRef.current) return;
@@ -58,14 +59,20 @@ export const BlocksProvider = ({ children } : props) => {
     
         pdf.save('document.pdf');
         document.body.removeChild(element);
-      };
+    };
+
+    const darkTheme = () => {
+        setDark(!isDark);
+    }
 
     return (
         <BlocksContext.Provider value={{
             editorData,
             updateData,
             setRef,
-            exportToPDF
+            exportToPDF,
+            darkTheme,
+            isDark
         }}>
             { children }
         </BlocksContext.Provider>

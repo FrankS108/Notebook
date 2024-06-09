@@ -17,7 +17,7 @@ const Editor: React.FC = () => {
     const editorRef = useRef<EditorJS | null>(null);
  // const [editorData, setEditorData] = useState<OutputData>({ blocks: [] });
 
-    const { editorData, updateData, setRef } = useContext(BlocksContext);
+    const { editorData, updateData, setRef, isDark } = useContext(BlocksContext);
 
     useEffect(() => {
         if (!editorRef.current) {
@@ -65,9 +65,9 @@ const Editor: React.FC = () => {
     }, [editorData]);
 
     return (
-        <div>
-            <div id="editorjs" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}></div>
-            <pre>{JSON.stringify(editorData, null, 2)}</pre>
+        <div className={`w-screen h-screen ${isDark ? 'dark' : ''}`}>
+            <div id="editorjs" style={{ padding: '10px' }}></div>
+            
         </div>
     );
 };
