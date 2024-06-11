@@ -1,4 +1,5 @@
 import EditorJS, { OutputData } from '@editorjs/editorjs';
+import { Doc } from 'yjs';
 
 export interface Block {
     id: string;
@@ -19,4 +20,12 @@ export interface BlocksContext {
     exportToPDF: () => void;
     darkTheme: () => void;
     isDark: boolean;
+}
+
+export interface SocketContext {
+    ws: WebSocket | null;
+    room: string;
+    connected: boolean;
+    setConnected: (newConnected: boolean) => void;
+    yDoc: Doc;
 }
