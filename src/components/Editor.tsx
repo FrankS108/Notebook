@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import EditorJS, { OutputData } from '@editorjs/editorjs';
+import React, { useContext, useEffect, useRef } from 'react';
+import EditorJS from '@editorjs/editorjs';
 //@ts-ignore
 import Header from '@editorjs/header';
 //@ts-ignore
@@ -11,6 +11,7 @@ import CheckList from '@editorjs/checklist';
 //@ts-ignore
 import NestedList from '@editorjs/nested-list';
 import { BlocksContext } from '../context/BlocksContext';
+import { SocketContext } from '../context/SocketContext';
 
 
 const Editor: React.FC = () => {
@@ -19,7 +20,11 @@ const Editor: React.FC = () => {
 
     const { editorData, updateData, setRef, isDark } = useContext(BlocksContext);
 
+    //ydoc is the shared document
+    const { yDoc } = useContext(SocketContext);
+ 
     useEffect(() => {
+        //call the ydoc updates when the editor data changes
         if (!editorRef.current) {
             editorRef.current = new EditorJS({
                 holder: 'editorjs',

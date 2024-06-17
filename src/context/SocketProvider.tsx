@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { SocketContext } from "./SocketContext";
+import { WebrtcProvider } from 'y-webrtc';
 import * as Yjs from 'yjs';
 
 const signalServer = 'ws://localhost:5000';
@@ -28,7 +29,18 @@ export const SocketProvider = ({ children }: props) => {
         }
         else {
             createRoom();
-        }    
+        }
+        //enabling y-webrtc logging
+        localStorage.log = 'y-webrtc:*';
+        //this is the whole thing about rtc, currently comunnicate correctly
+        const provider = new WebrtcProvider(room, yDoc.current, { signaling: [signalServer] });
+
+        const yText = yDoc.current.getText('editor');
+        
+        //the thing is handle the yjs eventsssssssss
+        yText.observe(event => {
+            console.log('Yjs event', event);
+        });
     }, []);
 
     const createRoom = () => {

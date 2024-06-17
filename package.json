@@ -22,6 +22,7 @@
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "y-webrtc": "^10.3.0",
     "yjs": "^13.6.16"
   },
   "devDependencies": {
